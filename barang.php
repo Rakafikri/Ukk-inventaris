@@ -7,7 +7,7 @@ require('connect.php');
 if(!isset($_SESSION['role'])) {
     $_SESSION['error-no-login'] = "Silakan login terlebih dahulu!";
     header('Location: login.php'); 
-    exit; // Wajib
+    exit;
 }
 ?>
 
@@ -114,7 +114,6 @@ if(!isset($_SESSION['role'])) {
                         
                         echo "<td>";
                         if($data['stok_saat_ini'] > 0) {
-                            // Cukup gunakan konfirmasi dasar yang sudah ada (tanpa logic this.onclick)
                             echo "<a href='proses-pinjam.php?id_barang=".$data['id_barang']."' class='btn-pinjam' onclick='return confirm(\"Yakin pinjam barang ini?\")'>PINJAM</a>";
                         } else {
                             echo "<span class='btn-habis'>HABIS</span>";

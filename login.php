@@ -9,7 +9,6 @@ if (isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($connect, $_POST['username']);
     $password = $_POST['password']; 
 
-    // Query ambil user (lengkap: user_id, password, role, nama)
     $query = "SELECT user_id, password, role, nama FROM pengguna WHERE nama = '$username' ";
     $result = mysqli_query($connect, $query);
 

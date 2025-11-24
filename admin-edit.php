@@ -60,19 +60,16 @@ if(!$data) {
         <label>Nama:</label><br>
         <input type="text" name="nama" value="<?php echo $data['nama']; ?>" required><br><br>
 
-        <!-- PASSWORD -->
         <label>Password:</label><br>
         <input type="text" name="password" placeholder="Isi jika ingin ganti password"><br>
         <small><i>*Kosongkan jika tidak ingin mengubah password</i></small><br><br>
 
-        <!-- ROLE -->
         <label>Role:</label><br>
         <select name="role">
             <option value="User" <?php if($data['role'] == 'User') echo 'selected'; ?>>User</option>
             <option value="Admin" <?php if($data['role'] == 'Admin') echo 'selected'; ?>>Admin</option>
         </select><br><br>
 
-        <!-- TOMBOL -->
         <button type="submit" name="update">Simpan Perubahan</button>
         <a href="admin.php">Batal</a>
     </form>
