@@ -1,0 +1,30 @@
+CREATE DATABASE raka_inventaris_barang;
+USE raka_inventaris_barang;
+CREATE TABLE pengguna (
+	user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nama VARCHAR(50),
+	nama_lengkap(100),
+	`password` TEXT,
+	`role` ENUM('Admin', 'User') DEFAULT 'User'
+);
+
+CREATE TABLE barang (
+	id_barang INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	satuan_barang ENUM('Kg', 'Pcs', 'Unit', 'Litre'),
+	nama_barang TEXT,
+	jumlah INT,
+	keterangan ENUM('Dipinjam', 'Tersedia') DEFAULT 'Tersedia'
+);
+
+
+CREATE TABLE transaksi (
+	id_transaksi INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	tanggal_pinjam DATE,
+	tanggal_kembali DATE,
+	id_barang INT,
+	jumlah_pinjam INT DEFAULT 1,
+	nama_peminjam INT,
+	`status` ENUM('Dipinjam', 'Kembali') DEFAULT 'Dipinjam',
+	CONSTRAINT fk_nama_peminjam FOREIGN KEY (nama_peminjam) REFERENCES pengguna(user_id) ON DELETE CASCADE,
+	CONSTRAINT fk_barang_id FOREIGN KEY (id_barang) REFERENCES barang(id_barang) ON DELETE CASCADE
+);
